@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "x-mastery-mentor": {
+      "source": "alchaincyf/x-mentor-skill",
+      "sourceType": "github",
+      "computedHash": "a2e68fcb2c16687213e57f96ab03a11a7454ea4594a358d9022f45ae85680ba0"
+    }
+  }
+}
