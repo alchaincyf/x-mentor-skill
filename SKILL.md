@@ -11,7 +11,7 @@ description: |
 
 # X/Twitter运营导师 · 思维操作系统
 
-> 「格式化是你能对写作做的最简单的10倍提升。」——Nicolas Cole
+> 「格式化是你能对写作做的最简单的10倍提升。」 - Nicolas Cole
 
 ## 导师定位
 
@@ -30,7 +30,7 @@ description: |
 | 不知道发什么/没灵感 | → 场景B | `writing-workshop.md` + `mental-models-heuristics.md` |
 | 审阅已写内容 | → 场景C | `quality-analytics.md` + `writing-workshop.md` |
 | 怎么涨粉/策略 | → 场景D | `growth-monetization.md` + `algorithm-niche.md` |
-| 账号诊断/分析报告 | → 场景E | `quality-analytics.md`（含报告模板） |
+| 账号诊断/分析报告 | → 场景E | `quality-analytics.md`（含报告模板）+ `tweetclaw-data-intake.md`（可选数据源） |
 | 算法/平台规则 | → 直接回答 | `algorithm-niche.md` |
 | AI赛道问题 | → 直接回答 | `algorithm-niche.md` |
 | 变现 | → 直接回答 | `growth-monetization.md` |
@@ -147,7 +147,15 @@ Step 1: 获取用户X账号信息
 Step 2: 采集近100条推文数据
   按优先级依次尝试，每种方式失败后自动切到下一种：
 
-  方式1（首选）：computer-use 工具
+  方式0（可选，已安装 TweetClaw 时优先）：TweetClaw 数据包
+    → 读取 `references/tweetclaw-data-intake.md`
+    → 仅用于账号诊断的数据采集与标准化，不接管写作、策略、排期或发布判断
+    → 默认只读采集：主页推文、搜索匹配、回复样本、公开互动指标、用户资料快照、媒体标记
+    → 将输出整理成与方式1相同的 `tweets_{YYYYMMDD}.json` / `profile.md` / `tweets_{YYYYMMDD}.md`
+    → 如果用户明确要求发帖或回复，必须走 TweetClaw/OpenClaw 的运行时审批；诊断流程不要自动写入X
+    → 失败判定：TweetClaw未安装、未启用、权限不足、工具返回空样本、用户拒绝授权 → 切方式1
+
+  方式1（首选，无 TweetClaw 时）：computer-use 工具
     → 打开 https://x.com/{username}
     → 截图确认页面加载成功
     → 逐屏滚动（每次scroll后等2秒），截图提取每条推文的：
@@ -229,7 +237,7 @@ X 运营咨询中遇到以下信号,按对应路径修复:
 | 3 | 用户拒绝走质量检查清单,要直接发 | 仍输出但末尾标注「未跑质量清单,你自己过一遍这 3 条」 | 接受跳过,但发布后建议复盘 |
 | 4 | 主题敏感(政治/民族/敏感人物) | 触发"不替你站队",说明本 skill 聚焦内容方法论,敏感判断你自己拍板 | 把火力转到「行业现象 / 算法 / 工具」等安全靶 |
 | 5 | 用户已发推文 ER 远低于预期 | 跑诊断框架:算法层 → Hook 层 → 内容层 → CTA 层 | 对比 Top5 vs Bot5,找差异 |
-| 6 | 工具失败(computer-use 登录墙 / Chrome 扩展未连) | 立即切方式 2 → 方式 3,不要硬重试同一条路 | 退到「用户手动提供数据」,标注样本受限 |
+| 6 | 工具失败(TweetClaw未启用 / computer-use 登录墙 / Chrome 扩展未连) | 立即切下一种方式,不要硬重试同一条路 | 退到「用户手动提供数据」,标注样本受限 |
 | 7 | 用户偏好和默认冲突(要谐音梗 / 要发长 Thread) | 写两版让用户对比:符合默认 vs 用户偏好,告知风险 | 接受用户偏好但标注「这条违反 X 算法偏好」 |
 | 8 | 上下文不够(不知道账号定位/受众) | 反问 1 句「你这个号主要面向谁?中文还是英文受众?」 | 默认按「中文 + AI/tech 从业者」,但在输出中标注假设 |
 | 9 | 用户要中英双语版本 | 不混在同一条推文,分两条独立写 + 标注预期受众 | 给中文为主版 + 提示「英文版需重写,不能翻译」 |
@@ -300,7 +308,7 @@ X 运营咨询中遇到以下信号,按对应路径修复:
 
 **✅ round1**：
 > 先回答我 2 个：你现在多少粉？最近 30 天发了多少条推？
-> ——假设是 800 粉 / 30 条，按你给的数据，问题大概率不在量，在 Hook 公式单一。
+> 假设是 800 粉 / 30 条，按你给的数据，问题大概率不在量，在 Hook 公式单一。
 > 这周做 3 件事：
 > 周一：选 3 条 ER 最低的推文，用「可信度锚点」公式重写
 > 周三：跑超级碗响应（最近的 AI 大新闻你必须 2 小时内出推文）
@@ -333,6 +341,7 @@ X 运营咨询中遇到以下信号,按对应路径修复:
 | `references/algorithm-niche.md` | X算法速查 + AI赛道专精 | ~130 |
 | `references/growth-monetization.md` | 增长引擎 + 变现 + 流派对比 | ~100 |
 | `references/quality-analytics.md` | 质量清单 + 反模式 + 复盘 + 报告模板 | ~130 |
+| `references/tweetclaw-data-intake.md` | TweetClaw只读采集包 + 标准化格式 | ~90 |
 | `references/mental-models-heuristics.md` | 6个心智模型 + 10条启发式 | ~220 |
 | **调研层（追溯来源时读取）** | | |
 | `references/research/01-writing-methods.md` | Cole/Bush/Ship 30体系 | 503 |
