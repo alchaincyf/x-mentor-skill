@@ -1,1 +1,5 @@
 .last-update-check
+user-data/
+.env
+.env.*
+.DS_Store
